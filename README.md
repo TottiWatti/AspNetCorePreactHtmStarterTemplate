@@ -1,5 +1,5 @@
-# AspNetCorePreactHtmStarterTemplate
- Lightweight ASP.NET Core SPA starter template with Preact HTM for Visual Studio 2022
+# ASP.Net Core Preact HTM Starter Template
+ Lightweight ASP.NET Core SPA starter template with Preact HTM for Visual Studio 2022. Type checking, shared models, bundling and minification supported.
 
 ## Preface
 Few years ago I needed a light weight solution for small ASP.NET (Core) projects. My requirements were:
@@ -8,6 +8,7 @@ Few years ago I needed a light weight solution for small ASP.NET (Core) projects
 * EcmaScript module support
 * No compile or very fast compile
 * Full blown Visual Studio project with both back and front end 
+
 While there was number of ready solutions for Visual Studio Code that met requirements I found none for full blown Visual Studio.
 I tried inbuild React solution. While React is great front end library debugging it with full Visual Studio becomes quite soon gets bloated and slow.
 Not to mention that it tends to force you to do everything "React way" and I like to use all kind of JavaScript libraries and vanilla JavaScript.
@@ -68,7 +69,7 @@ Fortunately TypeScript engine can read type definitions from JSDoc comments and 
 * Production JavaScript runs faster if HTM templates are precompiled to Preact nodes for production. [Babel](https://babeljs.io/) along with [babel-plugin-html](https://github.com/developit/htm/tree/master/packages/babel-plugin-htm) is used for that. It also obfuscates your template literals at your components.
 * Even though modern browsers can run modular JavaScript directly (as this template does for debugging) it requires browser to fetch each module individually from server which slows start up time published application. [Rollup](https://www.rollupjs.org/) is therefore used to bunde all ES modules into single file.
 * Minification makes your JavaScript smaller so it loads faster in published application. Minification also obfuscates your JavaScript code it's not open for anyone to read if that is something you like. [Terser](https://terser.org/) is used to mangle and minify final bundle
-* Not only JavaScript can be minified but CSS also. [PurceCSS](https://purgecss.com/) is used to minify CSS. It inspects your source files and discards all css not used in project, in this case unused CSS in [Bootstrap](https://getbootstrap.com/) CSS.
+* Not only JavaScript can be minified but CSS also. [PurceCSS](https://purgecss.com/) is used to minify CSS. It inspects your source files and discards all css not used in project, in this case unused CSS in [Bootstrap](https://getbootstrap.com/) CSS. Just remember to add all necessary css source files PurgeCSS call at package.json file.
 * This template is built on top of razor pages project. Razor is not used to inject presentatation data from server to browser as it normally is used. Razor has neat property, it can inject different code to browser while debugging versus production. That property is used to load modules to browser when debugging and bundled JavaScript in production.
 
 
