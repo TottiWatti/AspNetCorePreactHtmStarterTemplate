@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PreactHtmStarter</title>    
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/bundle.min.css" />
+    </environment>  
+
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>        
+
+    <environment include="Development">
+        <script defer type="module" src="~/src/App.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="module" src="~/bundle.min.js" asp-append-version="true"></script>
+    </environment>  
+
+</head>
+<body>
+    @RenderBody()    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

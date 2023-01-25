@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "scripts": {
+    "build-babel": "babel wwwroot/src -d wwwroot/babel",
+    "build-rollup": "rollup wwwroot/src/App.js --file wwwroot/bundle.js --format esm",
+    "build-rollup-babel": "rollup wwwroot/babel/App.js --file wwwroot/bundle.js --format esm",
+    "build-terser": "terser --compress --mangle -- wwwroot/bundle.js > wwwroot/bundle.min.js",
+    "trash-babel": "trash wwwroot/babel",
+    "build-purgecss": "purgecss --css wwwroot/lib/bootstrap/css/bootstrap.min.css --content wwwroot/bundle.js --output wwwroot/bundle.min.css",
+    "build-all": "npm run build-rollup && npm run build-terser && npm run build-purgecss",
+    "build-all-babel": "npm run build-babel && npm run build-rollup-babel && npm run build-terser && npm run build-purgecss && npm run trash-babel"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.17.6",
+    "@babel/core": "7.17.5",
+    "purgecss": "4.1.3",
+    "rollup": "2.69.0",
+    "terser": "5.12.0",
+    "trash-cli": "5.0.0",
+    "typescript-lit-html-plugin": "^0.9.0"
+  },
+  "dependencies": {
+    "babel-plugin-htm": "3.0.0"
+  }
+}
